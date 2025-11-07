@@ -29,3 +29,86 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.tugasnavigasi.R
+
+@Composable
+fun ListDaftar(navController: NavController) {
+    val lightPurple = Color(0xFFEAE7FC)
+    val midPurple = Color(0xFFDFD1FC)
+    val darkPurple = Color(0xFF8E70DC)
+    val labelColor = Color(0xFF4A1EAF)
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(midPurple)
+            .padding(top = 53.dp)
+    ) {
+        // Bagian Header
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(darkPurple)
+                .height(105.dp)
+                .padding(16.dp),
+            contentAlignment = Alignment.BottomStart
+        ) {
+            Text(
+                text = "List Daftar Peserta",
+                fontSize = 30.sp,
+                color = Color.White,
+                modifier = Modifier.padding(start = 10.dp)
+            )
+        }
+
+        // Bagian Isi (List Data)
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(17.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            InfoCard(
+                label = stringResource(id = R.string.nama_lengkap),
+                value = "Chesta Yurcel Zebada",
+                backgroundColor = lightPurple,
+                labelColor = labelColor
+            )
+            Spacer(modifier = Modifier.height(17.dp))
+
+            InfoCard(
+                label = stringResource(id = R.string.jenis_kelamin),
+                value = "Laki-laki",
+                backgroundColor = lightPurple,
+                labelColor = labelColor
+            )
+            Spacer(modifier = Modifier.height(17.dp))
+
+            InfoCard(
+                label = "STATUS PERKAWINAN",
+                value = "Lajang",
+                backgroundColor = lightPurple,
+                labelColor = labelColor
+            )
+            Spacer(modifier = Modifier.height(17.dp))
+
+            InfoCard(
+                label = stringResource(id = R.string.alamat),
+                value = "Sleman",
+                backgroundColor = lightPurple,
+                labelColor = labelColor
+            )
+            Spacer(modifier = Modifier.height(50.dp))
+
+            // Tombol Navigasi
+            CustomButton(text = "Beranda", color = darkPurple) {
+                navController.navigate("HalamanAwal")
+            }
+            Spacer(modifier = Modifier.height(25.dp))
+
+            CustomButton(text = "Formulir Pendaftaran", color = darkPurple) {
+                navController.navigate("Formulir")
+            }
+            Spacer(modifier = Modifier.height(16.dp))
+        }
+    }
+}
